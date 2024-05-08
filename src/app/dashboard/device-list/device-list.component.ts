@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatMenu } from '@angular/material/menu';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { AddDeviceDialogComponent } from '../add-device-dialog/add-device-dialog.component';
+import { FileSelectionDialogComponent } from './file-selection-dialog/file-selection-dialog.component';
 import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 
 
@@ -132,5 +133,14 @@ onClick(event: MouseEvent) {
       }
       // Handle dialog result here
     }});
+  }
+  openFileSelectionDialog() {
+    const dialogRef = this.dialog.open(FileSelectionDialogComponent, {
+      width: '400px',});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      // Handle the selected file here
+    });
   }
 }

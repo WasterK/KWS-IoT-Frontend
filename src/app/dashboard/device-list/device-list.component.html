@@ -9,7 +9,7 @@
                     </button>
                     <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen(i) }">
                         <!-- Dropdown items -->
-                        <a class="dropdown-item">Send fle</a>
+                        <a class="dropdown-item" (click)="openFileSelectionDialog()">Send file</a>
                     </div>
                 </div>
 

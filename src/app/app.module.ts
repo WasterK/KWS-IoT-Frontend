@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddDeviceDialogComponent } from './dashboard/add-device-dialog/add-device-dialog.component';
+import { FileSelectionDialogComponent } from './dashboard/device-list/file-selection-dialog/file-selection-dialog.component';
 
 
 
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     DashboardNavbarComponent,
     DeviceListComponent,
     AddDeviceDialogComponent,
+    FileSelectionDialogComponent,
   ],
   imports: [
     BrowserModule,
