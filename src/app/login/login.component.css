@@ -1,0 +1,88 @@
+.login-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f5f9; /* Light blue background */
+}
+
+.card {
+  width: 400px;
+  background-color: #ffffff; /* White card background */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.card-header {
+  background-color: #3f88c5; /* Blue header background */
+  color: #ffffff; /* White header text color */
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-color: #3f88c5; /* Blue border color */
+}
+
+.btn-primary {
+  background-color: #3f88c5; /* Blue button background */
+  border-color: #3f88c5; /* Blue button border color */
+  width: 100%; /* Button width */
+}
+
+.btn-primary:hover {
+  background-color: #306a9f; /* Darker blue on hover */
+  border-color: #306a9f; /* Darker blue border on hover */
+}
+
+.login-success {
+  background-color: green;
+  color: white; /* Optional: Change text color */
+}
+
+.login-fail {
+  background-color: red;
+  color: white; /* Optional: Change text color */
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.google-login {
+  background-color: #dd4b39; /* Google red color */
+  color: white;
+  border: none;
+  padding: 20px; /* Adjust the padding to decrease the size of the circle */
+  font-size: 20px; /* Adjust the font size of the "G" */
+  cursor: pointer;
+  border-radius: 50%; /* Make the button round */
+  position: relative;
+  overflow: hidden;
+}
+
+.google-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.google-login:hover {
+  background-color: #c53727; /* Darker shade of Google red */
+}
+
+

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let device of devices">
+        <div class="panel panel-default">
+            <div class="panel-body position-relative panel-body-custom">
+                <div>
+                    <h4>Name: {{ device.name }}</h4>
+                    <!-- Apply dynamic class based on device status -->
+                    <p>Status: <span [ngClass]="{ 'text-success': device.status === 'online', 'text-danger': device.status === 'offline' }">{{ device.status }}</span></p>
+
+
+                    <h5>Device Id: {{ device.deviceId }}</h5>
+                </div>
+                <div class="device-btn">
+                    <button (click)="onRefresh(device.deviceId, device.deviceUrl)" class="btn btn-primary btn-custom">Refresh</button>
+                    <button class="btn btn-danger btn-custom">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-body text-center">
+                <button class="btn btn-primary" (click)="onAddNewDevice()">
+                    <i class="fas fa-plus"></i> Add New Device
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

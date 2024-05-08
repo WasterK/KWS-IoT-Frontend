@@ -1,0 +1,5 @@
+#cmd for ssl certificates generation
+openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem
+
+#to run app in ssl
+ng serve --ssl --ssl-key D:\Projects\KWS\user_management\key.pem --ssl-cert D:\Projects\KWS\user_management\certificate.pem

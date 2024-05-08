@@ -1,0 +1,24 @@
+.login-frame,
+.signup-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+}
+
+.card {
+  width: 300px; /* Adjust the width as needed */
+}
+
+.card-header {
+    border-bottom: 2px solid #007BFF; /* Border color can be adjusted */
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-family: 'Arial', sans-serif; /* Adjust the font family */
+    font-size: 20px; /* Adjust the font size */
+    color: #007BFF; /* Adjust the text color */
+    margin-bottom: 0; /* Remove default margin */
+  }

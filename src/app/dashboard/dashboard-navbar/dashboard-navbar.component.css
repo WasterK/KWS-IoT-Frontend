@@ -1,0 +1,18 @@
+.profile-info {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.profile-details {
+    margin-top: 12px;
+    margin-right: 15px; /* Adjust margin between text and image */
+    margin-left: 15px;
+}
+
+.profile-picture {
+    width: 30px;
+    height: 30px;
+    border-radius: 40%;
+    margin-top: 8px;
+    margin-right: 15px;
+}
