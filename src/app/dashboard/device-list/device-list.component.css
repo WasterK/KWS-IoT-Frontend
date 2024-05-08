@@ -3,6 +3,11 @@
     padding: 15px;
     transition: background-color 0.3s; /* Add transition for hover effect */
     margin-left: 10px; /* Add margin on the left */
+    position: relative; /* Ensure relative positioning */
+}
+
+button:focus {
+    outline: none;
 }
 
 .panel-body-custom:hover {
@@ -10,10 +15,28 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
+.three-dots-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.three-dots-btn button {
+    background-color: transparent; /* Set background color to transparent */
+    border: none; /* Remove border */
+    font-weight: bold; /* Make the dots appear more bold */
+    color: #000; /* Set color to black */
+}
+
+.three-dots-btn button:hover {
+    cursor: pointer; /* Change cursor on hover */
+    text-decoration: underline; /* Underline dots on hover */
+}
+
 .device-btn {
     position: absolute;
-    top: 10px;
-    right: 25px; /* Adjusted the position of the buttons */
+    bottom: 10px;
+    right: 10px; /* Adjusted the position of the buttons */
 }
 
 .device-btn button {
@@ -35,3 +58,47 @@
     background-color: red;
     border-color: red;
 }
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -80px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 110px;
+    padding: 2px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #007bff;
+  }
+  

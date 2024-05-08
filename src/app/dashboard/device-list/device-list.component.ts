@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { Device } from '../device.model';
 import { MatDialog } from '@angular/material/dialog';
+import { MatMenu } from '@angular/material/menu';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { AddDeviceDialogComponent } from '../add-device-dialog/add-device-dialog.component';
 import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
@@ -15,11 +16,30 @@ import { throwDialogContentAlreadyAttachedError } from '@angular/cdk/dialog';
 export class DeviceListComponent {
   @Input() userData: string;
   unique_id: string;
+  openDropdownIndex: number = -1;
+
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 
-  devices: Device[] = [
+  devices: Device[] = [];
   
-  ]
+ // Method to toggle dropdown
+ toggleDropdown(index: number) {
+  this.openDropdownIndex = (this.openDropdownIndex === index) ? -1 : index;
+}
+
+// Method to check if dropdown is open
+isDropdownOpen(index: number): boolean {
+  return this.openDropdownIndex === index;
+}
+
+// Method to close dropdown when clicking outside
+@HostListener('document:click', ['$event'])
+onClick(event: MouseEvent) {
+  const targetElement = event.target as HTMLElement;
+  if (!targetElement.closest('.three-dots-btn')) {
+    this.openDropdownIndex = -1;
+  }
+}
 
   ngOnInit() {
     const userDataString = this.userData.replace(/'/g, '"');
@@ -33,16 +53,17 @@ export class DeviceListComponent {
       `https://127.0.0.1:5000/get-all-devices/${userDataObject.unique_id}` 
     ).subscribe(
       (response: HttpResponse<any>) => {
-        console.log('Response :', response.body);
+        // console.log('Response :', response.body);
         allDeviceData = response.body;
-        console.log('all device :', allDeviceData);
+        // console.log('all device :', allDeviceData);
     
         for (let device of allDeviceData) {
-          this.devices.push(new Device(device.device_name, 'offline', device.device_id, device.device_url))
+          this.devices.push(new Device(device.device_name, 'offline', device.device_id, device.device_url));
         }
       }
-    )
-    } 
+    );
+  }
+  
 
   skipHeader = new HttpHeaders({
     'ngrok-skip-browser-warning': 'true'

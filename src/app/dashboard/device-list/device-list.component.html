@@ -1,15 +1,25 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let device of devices">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let device of devices; let i = index">
         <div class="panel panel-default">
             <div class="panel-body position-relative panel-body-custom">
+                <!-- Three dots button -->
+                <div class="three-dots-btn">
+                    <button class="btn btn-default btn-xs" (click)="toggleDropdown(i); $event.stopPropagation()">
+                        <i class="fas fa-ellipsis-v">. . .</i>
+                    </button>
+                    <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen(i) }">
+                        <!-- Dropdown items -->
+                        <a class="dropdown-item">Send fle</a>
+                    </div>
+                </div>
+
                 <div>
                     <h4>Name: {{ device.name }}</h4>
                     <!-- Apply dynamic class based on device status -->
                     <p>Status: <span [ngClass]="{ 'text-success': device.status === 'online', 'text-danger': device.status === 'offline' }">{{ device.status }}</span></p>
-
-
                     <h5>Device Id: {{ device.deviceId }}</h5>
                 </div>
+                <!-- Buttons moved to bottom-right corner -->
                 <div class="device-btn">
                     <button (click)="onRefresh(device.deviceId, device.deviceUrl)" class="btn btn-primary btn-custom">Refresh</button>
                     <button class="btn btn-danger btn-custom">Remove</button>
