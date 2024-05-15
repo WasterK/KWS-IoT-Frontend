@@ -18,7 +18,8 @@ export class DeviceListComponent {
   @Input() userData: string;
   unique_id: string;
   openDropdownIndex: number = -1;
-
+  deviceId: any;
+  
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 
   devices: Device[] = [];
@@ -114,7 +115,7 @@ onClick(event: MouseEvent) {
       width: '400px', // Adjust width as needed
       // Other dialog configurations like height, position, etc.
     });
-
+    
     // Handle dialog result if needed
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
@@ -127,9 +128,10 @@ onClick(event: MouseEvent) {
           ).subscribe(
             (response: HttpResponse<any>) => {
               console.log('Response Status:', response.status);
+              this.deviceId = response.body.device_id;
+              this.devices.push(new Device(result.deviceName, 'offline', this.deviceId, result.deviceUrl))
             }
           )
-        this.devices.push(new Device(result.deviceName, 'offline', 2, result.deviceUrl))
       }
       // Handle dialog result here
     }});
@@ -143,4 +145,18 @@ onClick(event: MouseEvent) {
       // Handle the selected file here
     });
   }
+  onRemovePressed(device_id) {
+    this.http.delete(
+      "https://127.0.0.1:5000/delete-device/" + device_id
+    ).subscribe(
+      (response: HttpResponse<any>) => {
+        console.log('Response Status:', response.status);
+        const index = this.devices.findIndex(device => device.deviceId === device_id);
+        if(index != -1) {
+          this.devices.splice(index, 1);
+        }
+      }
+    )
+  }
+
 }

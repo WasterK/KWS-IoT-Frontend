@@ -22,7 +22,7 @@
                 <!-- Buttons moved to bottom-right corner -->
                 <div class="device-btn">
                     <button (click)="onRefresh(device.deviceId, device.deviceUrl)" class="btn btn-primary btn-custom">Refresh</button>
-                    <button class="btn btn-danger btn-custom">Remove</button>
+                    <button class="btn btn-danger btn-custom" (click)="onRemovePressed(device.deviceId)">Remove</button>
                 </div>
             </div>
         </div>
