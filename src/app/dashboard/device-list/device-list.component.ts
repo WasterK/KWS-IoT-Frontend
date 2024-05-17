@@ -136,15 +136,28 @@ onClick(event: MouseEvent) {
       // Handle dialog result here
     }});
   }
-  openFileSelectionDialog() {
+  openFileSelectionDialog(deviceUrl: string) {
     const dialogRef = this.dialog.open(FileSelectionDialogComponent, {
       width: '400px',});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      // Handle the selected file here
+    dialogRef.afterClosed().subscribe(selectedFiles => {
+      console.log('The dialog was closed', selectedFiles);
+
+      const formData: FormData = new FormData();
+
+      selectedFiles.forEach((file: any, index: any) => {
+      formData.append('files', file, file.name);
+    });
+
+    this.http.post(
+      `${deviceUrl}/upload-location-file`, 
+      formData
+      ).subscribe((response) => {
+        console.log('Response:', response);
+      });
     });
   }
+  
   onRemovePressed(device_id) {
     this.http.delete(
       "https://127.0.0.1:5000/delete-device/" + device_id

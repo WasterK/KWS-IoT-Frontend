@@ -1,11 +1,11 @@
 <mat-dialog-content class="dialog-content">
     <h2>Select YAML File</h2>
-    <input type="file" (change)="onFileSelected($event.target.files)" accept=".yaml, .yml">
+    <input type="file" (change)="onFileSelected($event)" accept=".yaml, .yml" multiple>
     <p *ngIf="selectedFileName">Selected File: {{ selectedFileName }}</p>
   </mat-dialog-content>
   
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-raised-button color="primary" (click)="onFileConfirm()" [disabled]="!selectedFileName">Confirm and Send</button>
+    <button mat-raised-button color="primary" (click)="onFileConfirm()" [disabled]="!selectedFileContent">Confirm and Send</button>
   </mat-dialog-actions>
   

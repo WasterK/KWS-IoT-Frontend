@@ -7,19 +7,29 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./file-selection-dialog.component.css']
 })
 export class FileSelectionDialogComponent {
+  selectedFileContent: string;
   selectedFileName: string;
+  selectedFiles: File[] = [];
+  file: File;
 
   constructor(public dialogRef: MatDialogRef<FileSelectionDialogComponent>) {}
 
-  onFileSelected(files: FileList) {
-    if (files.length > 0) {
-      this.selectedFileName = files[0].name;
-    } else {
-      this.selectedFileName = '';
+  onFileSelected(event: any) {
+    this.selectedFiles = Array.from(event.target.files);
+
+   this.file = event.target.files[0];
+
+    if (this.file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedFileContent = e.target.result;
+        this.selectedFileName = this.file.name
+      };
+      reader.readAsText(this.file);
     }
   }
 
   onFileConfirm() {
-    this.dialogRef.close(this.selectedFileName);
+    this.dialogRef.close(this.selectedFiles);
   }
 }
